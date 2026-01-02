@@ -5,8 +5,19 @@ import 'package:cleantemplate/features/news/presentation/bloc/news/news_state.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NewsHomePage extends StatelessWidget {
+class NewsHomePage extends StatefulWidget {
   const NewsHomePage({super.key});
+
+  @override
+  State<NewsHomePage> createState() => _NewsHomePageState();
+}
+
+class _NewsHomePageState extends State<NewsHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<NewsBloc>().add(FetchNewsEvent());
+  }
 
   @override
   Widget build(BuildContext context) {

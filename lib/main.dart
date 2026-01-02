@@ -1,3 +1,4 @@
+import 'package:cleantemplate/di.dart';
 import 'package:cleantemplate/features/news/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +9,12 @@ import 'features/news/domain/usecase/get_news_usecase.dart';
 import 'features/news/presentation/bloc/news/news_bloc.dart';
 
 void main() {
-  final dataSource = NewsRemoteDataSource();
-  final repository = NewsRepositoryImpl(dataSource);
-  final useCase = GetNewsUseCase(repository);
+  // final dataSource = NewsRemoteDataSource();
+  // final repository = NewsRepositoryImpl(dataSource);
+  // final useCase = GetNewsUseCase(repository);
 
-  runApp(BlocProvider(create: (_) => NewsBloc(useCase), child: const MyApp()));
+  initDi();
+  runApp(BlocProvider(create: (_) => sl<NewsBloc>(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,9 +22,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: NewsHomePage(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: NewsHomePage());
   }
 }
