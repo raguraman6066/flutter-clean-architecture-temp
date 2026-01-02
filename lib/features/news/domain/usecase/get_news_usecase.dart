@@ -1,9 +1,9 @@
+import 'package:cleantemplate/features/news/data/repository/news_repo_imp.dart';
 import 'package:cleantemplate/features/news/domain/entity/news_entity.dart';
-import 'package:cleantemplate/features/news/domain/repository/news_repo.dart';
 import 'package:dartz/dartz.dart';
 
 class GetNewsUseCase {
-  final NewsRepository repository;
+  final NewsRepositoryImpl repository;
 
   GetNewsUseCase(this.repository);
 
